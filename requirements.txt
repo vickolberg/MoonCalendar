@@ -1,7 +1,6 @@
 aiofiles==23.2.1
 anaconda-client==1.2.2
 appdirs==1.4.3
-apt-clone==0.2.1
 apt-xapian-index==0.49
 asgiref==3.5.2
 async-generator==1.10
