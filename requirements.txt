@@ -15,7 +15,6 @@ click==8.1.7
 clyent==1.2.1
 colorama==0.4.6
 cryptography==2.8
-cupshelpers==1.0
 dbus-python==1.2.16
 decorator==4.4.2
 defer==1.0.6
