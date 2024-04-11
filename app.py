@@ -31,7 +31,6 @@ def index():
         flashed_messages.clear()
 
     return render_template("index.html")
-
 def month_convert(month):
     months = {
     1: "January",
@@ -72,3 +71,24 @@ def page():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
