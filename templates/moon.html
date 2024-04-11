@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/moon.css')}}">
+    <title>Moon Calendar</title>
+</head>
+<body>
+    <form action="/">
+        <input type="submit" value="Back" id="submit_button">
+    </form>
+                <h2>The Moon in The Month of {{ month_convert(month) }}</h2>
+                <h3>{{ city }}, {{ state }}</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in cal %}
+            <tr>
+                {% for day in week %}
+                    {% if day == 0 %}
+                        <td></td>
+                    {% else %}
+                        <td>
+                            <span class="day">{{ day }}</span><br>
+                            {% set date_string = my_data["start_date"][:8] + "%02d"|format(day) + 'T00:00:00Z' %}
+                            {% if moon_values[date_string] is defined %}
+                                <span class="Visibility">Moon Light: {{ moon_values[date_string] }}%</span><br>
+                            {% endif %}
+                            {% set date_string1 = '%04d-%02d-%02d'|format(year, month, day) %}
+                            {% if moon_rise[date_string1] is defined %}
+                                <span class="rise">Moon Rise: {{ moon_rise[date_string1] }}</span><br>
+                            {% endif %}
+                            {% if moon_rise[date_string1] is not defined %}
+                                <span class="rise"> Moon Rise: None</span><br>
+                            {% endif %}
+                            {% if moon_set[date_string1] is defined %}
+                                <span class="set">Moon Set: {{ moon_set[date_string1] }}</span><br>
+                            {% endif %}
+                            {% if moon_set[date_string1] is not defined %}
+                                <span class="set"> Moon Set: None</span><br>
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
